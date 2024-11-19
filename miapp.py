@@ -1,23 +1,21 @@
+# Importar bibliotecas necesarias
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-streamlit run bioinfo.py
-
-
-# Título de la app
+# Título de la aplicación
 st.title("Selector de Gráficos")
 
-# Opciones de gráficos
+# Crear opciones para seleccionar
 options = ["Seno", "Coseno", "Tangente", "Logaritmo"]
 selection = st.radio("Selecciona un gráfico:", options)
 
 # Función para generar gráficos
 def generate_graph(option):
-    fig, ax = plt.subplots()  # Crea un lienzo de Matplotlib
+    fig, ax = plt.subplots()  # Crear una figura
     x = np.linspace(0, 10, 100)  # Valores para el eje x
 
-    # Gráfico según la opción seleccionada
+    # Generar el gráfico según la opción seleccionada
     if option == "Seno":
         ax.plot(x, np.sin(x), label="Seno", color="blue")
     elif option == "Coseno":
@@ -26,7 +24,7 @@ def generate_graph(option):
         ax.plot(x, np.tan(x), label="Tangente", color="red")
     elif option == "Logaritmo":
         ax.plot(x, np.log(x + 1), label="Logaritmo", color="purple")
-    
+
     ax.legend()
     ax.set_title(f"Gráfico de {option}")
     ax.grid(True)
@@ -35,6 +33,6 @@ def generate_graph(option):
 # Mostrar el gráfico seleccionado
 try:
     fig = generate_graph(selection)
-    st.pyplot(fig)
+    st.pyplot(fig)  # Mostrar el gráfico en Streamlit
 except Exception as e:
     st.error(f"¡Error al generar el gráfico: {e}!")

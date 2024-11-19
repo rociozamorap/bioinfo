@@ -10,5 +10,5 @@ def get_protein_info(prot):
     descriptor = prot_data["struct"]["pdbx_descriptor"]
     return descriptor, title
 
-st.sidebar.title('Show Proteins')
+st.sidebar.title('G')
 protein = st.sidebar.text_input('Ingrese la secuencia de ADN:', "")

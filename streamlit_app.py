@@ -13,8 +13,3 @@ def get_protein_info(prot):
 
 st.sidebar.title('Show Proteins')
 protein = st.sidebar.text_input('Enter protein:', "")
-if protein != "":
-    st.sidebar.markdown(f'**{get_protein_info(protein)[0]}**')
-    st.sidebar.markdown(f'**{get_protein_info(protein)[1]}**')
-    xyzview = py3Dmol.view(query='pdb:'+protein)
-else: showmol(xyzview,height=500,width=800)

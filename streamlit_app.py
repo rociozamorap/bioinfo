@@ -1,6 +1,8 @@
 import streamlit as st
 import py3Dmol
 import requests
+
+import copy
 import json
 
 import streamlit as st

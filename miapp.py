@@ -1,16 +1,21 @@
 import streamlit as st
-import py3Dmol
+import numpy as np
+import matplotlib.pyplot as plt
 import requests
-from stmol import showmol
 import json
 
+# Función para obtener información de proteínas
 def get_protein_info(prot):
-    req = requests.get(f'https://data.rcsb.org/rest/v1/core/entry/{prot}/')
-    prot_data = json.loads(req.text)
-    title = prot_data["struct"]["title"]
-    descriptor = prot_data["struct"]["pdbx_descriptor"]
-    return descriptor, title
+    try:
+        req = requests.get(f'https://data.rcsb.org/rest/v1/core/entry/{prot}/')
+        prot_data = json.loads(req.text)
+        title = prot_data["struct"]["title"]
+        descriptor = prot_data["struct"]["pdbx_descriptor"]
+        return descriptor, title
+    except Exception as e:
+        return None, f"Error al obtener información de la proteína: {e}"
 
+# Configuración de Streamlit
 st.sidebar.title('Show Proteins')
 
 st.title("Selector de Gráficos")
@@ -18,6 +23,7 @@ st.title("Selector de Gráficos")
 options = ["Seno", "Coseno", "Tangente", "Logaritmo"]
 selection = st.radio("Selecciona un gráfico:", options)
 
+# Función para generar gráficos
 def generate_graph(option):
     fig, ax = plt.subplots()  # Crear una figura
     x = np.linspace(0, 10, 100)  # Valores para el eje x
@@ -36,8 +42,10 @@ def generate_graph(option):
     ax.grid(True)
     return fig
 
+# Mostrar el gráfico seleccionado
 try:
     fig = generate_graph(selection)
     st.pyplot(fig)  # Mostrar el gráfico en Streamlit
 except Exception as e:
     st.error(f"¡Error al generar el gráfico: {e}!")
+

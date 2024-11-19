@@ -1,6 +1,2 @@
-streamlit
-py3Dmol
-stmol
-requests
-rdkit
-ipython_genutils
+$ pip install -r requirements.txt
+

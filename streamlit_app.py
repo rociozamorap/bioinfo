@@ -1,7 +1,7 @@
 import streamlit as st
 import py3Dmol
 import requests
-from stmol import showmol
+import json
 
 def get_protein_info(prot):
     req = requests.get(f'https://data.rcsb.org/rest/v1/core/entry/{prot}/')

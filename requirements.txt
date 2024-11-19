@@ -1,3 +1,9 @@
 pip install streamlit matplotlib numpy
 streamlit run app_del_archivo.py
 
+streamlit
+py3Dmol
+stmol
+requests
+rdkit
+ipython_genutils

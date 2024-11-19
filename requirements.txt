@@ -1,5 +1,5 @@
 pip install streamlit matplotlib numpy
-streamlit run app_del_archivo.py
+streamlit run app.py
 
 streamlit
 py3Dmol

@@ -1,23 +1,33 @@
 import streamlit as st
-import py3Dmol
-import requests
+import matplotlib.pyplot as plt
+import numpy as np
 
-import copy
-import json
+# Título de la app
+st.title("Selector de Gráficos")
 
-import streamlit as st
-from streamlit_image_select import image_select
+# Opciones de gráficos
+options = ["Gráfico 1", "Gráfico 2", "Gráfico 3", "Gráfico 4"]
+selection = st.radio("Selecciona un gráfico:", options)
 
-from utils import (
-    st_get_osm_geometries,
-    st_plot_all,
-    get_colors_from_style,
-    gdf_to_bytesio_geojson,
-)
-from prettymapp.geo import GeoCodingError, get_aoi
-from prettymapp.settings import STYLES
+# Función para generar gráficos
+def generate_graph(option):
+    fig, ax = plt.subplots()
+    x = np.linspace(0, 10, 100)
+    
+    if option == "Gráfico 1":
+        ax.plot(x, np.sin(x), label="Seno", color="blue")
+    elif option == "Gráfico 2":
+        ax.plot(x, np.cos(x), label="Coseno", color="green")
+    elif option == "Gráfico 3":
+        ax.plot(x, np.tan(x), label="Tangente", color="red")
+    elif option == "Gráfico 4":
+        ax.plot(x, np.log(x+1), label="Logaritmo", color="purple")
+    
+    ax.legend()
+    ax.set_title(option)
+    ax.grid(True)
+    return fig
 
-st.set_page_config(
-    page_title="prettymapp", page_icon="🖼️", initial_sidebar_state="collapsed"
-)
-st.markdown("# Prettymapp")
+# Mostrar el gráfico seleccionado
+fig = generate_graph(selection)
+st.pyplot(fig)

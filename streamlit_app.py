@@ -2,10 +2,10 @@ import streamlit as st
 import py3Dmol
 import requests
 from stmol import showmol
-
-from streamlit_image_select import image_select
 import copy
 import json
+
+from streamlit_image_select import image_select
 from utils import (
     st_get_osm_geometries,
     st_plot_all,

@@ -3,6 +3,8 @@ import py3Dmol
 import requests
 import json
 
+
+
 def get_protein_info(prot):
     req = requests.get(f'https://data.rcsb.org/rest/v1/core/entry/{prot}/')
     prot_data = json.loads(req.text)
@@ -10,17 +12,10 @@ def get_protein_info(prot):
     descriptor = prot_data["struct"]["pdbx_descriptor"]
     return descriptor, title
 
-st.sidebar.title('G')
+st.sidebar.title('Proteinas')
 protein = st.sidebar.text_input('Ingrese la secuencia de ADN:', "")
 
-from utils import (
-    st_get_osm_geometries,
-    st_plot_all,
-    get_colors_from_style,
-    gdf_to_bytesio_geojson,
-)
-from prettymapp.geo import GeoCodingError, get_aoi
-from prettymapp.settings import STYLES
+
 
 st.set_page_config(
     page_title="prettymapp", page_icon="🖼️", initial_sidebar_state="collapsed"

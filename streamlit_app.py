@@ -6,28 +6,32 @@ import numpy as np
 st.title("Selector de Gráficos")
 
 # Opciones de gráficos
-options = ["Gráfico 1", "Gráfico 2", "Gráfico 3", "Gráfico 4"]
+options = ["Seno", "Coseno", "Tangente", "Logaritmo"]
 selection = st.radio("Selecciona un gráfico:", options)
 
 # Función para generar gráficos
 def generate_graph(option):
-    fig, ax = plt.subplots()
-    x = np.linspace(0, 10, 100)
-    
-    if option == "Gráfico 1":
+    fig, ax = plt.subplots()  # Crea un lienzo de Matplotlib
+    x = np.linspace(0, 10, 100)  # Valores para el eje x
+
+    # Gráfico según la opción seleccionada
+    if option == "Seno":
         ax.plot(x, np.sin(x), label="Seno", color="blue")
-    elif option == "Gráfico 2":
+    elif option == "Coseno":
         ax.plot(x, np.cos(x), label="Coseno", color="green")
-    elif option == "Gráfico 3":
+    elif option == "Tangente":
         ax.plot(x, np.tan(x), label="Tangente", color="red")
-    elif option == "Gráfico 4":
-        ax.plot(x, np.log(x+1), label="Logaritmo", color="purple")
+    elif option == "Logaritmo":
+        ax.plot(x, np.log(x + 1), label="Logaritmo", color="purple")
     
     ax.legend()
-    ax.set_title(option)
+    ax.set_title(f"Gráfico de {option}")
     ax.grid(True)
     return fig
 
 # Mostrar el gráfico seleccionado
-fig = generate_graph(selection)
-st.pyplot(fig)
+try:
+    fig = generate_graph(selection)
+    st.pyplot(fig)
+except Exception as e:
+    st.error(f"¡Error al generar el gráfico: {e}!")

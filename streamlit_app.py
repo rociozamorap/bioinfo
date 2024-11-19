@@ -3,6 +3,7 @@ import py3Dmol
 import requests
 from stmol import showmol
 
+from streamlit_image_select import image_select
 import copy
 import json
 from utils import (

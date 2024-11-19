@@ -21,6 +21,3 @@ st.set_page_config(
     page_title="prettymapp", page_icon="🖼️", initial_sidebar_state="collapsed"
 )
 st.markdown("# Prettymapp")
-
-with open("./streamlit-prettymapp/examples.json", "r", encoding="utf8") as f:
-    EXAMPLES = json.load(f)

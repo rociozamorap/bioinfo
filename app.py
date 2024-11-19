@@ -2,6 +2,9 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
+streamlit run bioinfo.py
+
+
 # Título de la app
 st.title("Selector de Gráficos")
 

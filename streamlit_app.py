@@ -2,7 +2,15 @@ import streamlit as st
 import py3Dmol
 import requests
 from stmol import showmol
+
+import copy
 import json
+from utils import (
+    st_get_osm_geometries,
+    st_plot_all,
+    get_colors_from_style,
+    gdf_to_bytesio_geojson,
+)
 
 def get_protein_info(prot):
     req = requests.get(f'https://data.rcsb.org/rest/v1/core/entry/{prot}/')

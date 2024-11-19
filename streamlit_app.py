@@ -12,4 +12,4 @@ def get_protein_info(prot):
     return descriptor, title
 
 st.sidebar.title('Show Proteins')
-protein = st.sidebar.text_input('Enter protein:', "")
+protein = st.sidebar.text_input('Ingrese la secuencia de ADN:', "")
